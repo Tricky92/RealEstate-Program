@@ -37,8 +37,8 @@ public class MenuJFrame extends javax.swing.JFrame {
         jButtonDelete = new javax.swing.JButton();
         jButtonAdd = new javax.swing.JButton();
         jButtonReset = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelHeader = new javax.swing.JLabel();
+        jLabelFooter = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -190,16 +190,16 @@ public class MenuJFrame extends javax.swing.JFrame {
         jPanel1.add(jButtonReset);
         jButtonReset.setBounds(0, 100, 175, 70);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(250, 20, 470, 60);
+        jLabelHeader.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabelHeader.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(jLabelHeader);
+        jLabelHeader.setBounds(250, 20, 470, 60);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 480, 170, 90);
+        jLabelFooter.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelFooter.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jLabelFooter);
+        jLabelFooter.setBounds(0, 480, 170, 90);
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Thilina\\Desktop\\DSA UI.jpg")); // NOI18N
         jPanel1.add(jLabel1);
@@ -357,8 +357,8 @@ public class MenuJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonReset;
     private javax.swing.JButton jButtonSearch;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelFooter;
+    private javax.swing.JLabel jLabelHeader;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
