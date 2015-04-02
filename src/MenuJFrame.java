@@ -30,12 +30,12 @@ public class MenuJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldNoBedRooms = new javax.swing.JTextField();
+        jTextFieldSFeet = new javax.swing.JTextField();
+        jTextFieldLPrice = new javax.swing.JTextField();
+        jTextFieldLName = new javax.swing.JTextField();
+        jTextFieldFName = new javax.swing.JTextField();
+        jTextFieldLotNum = new javax.swing.JTextField();
         jButtonNext = new javax.swing.JButton();
         jButtonPrevious = new javax.swing.JButton();
         jButtonClear = new javax.swing.JButton();
@@ -43,7 +43,6 @@ public class MenuJFrame extends javax.swing.JFrame {
         jButtonDelete = new javax.swing.JButton();
         jButtonAdd = new javax.swing.JButton();
         jButtonReset = new javax.swing.JButton();
-        jLabelHeader = new javax.swing.JLabel();
         jLabelFooter = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -58,78 +57,78 @@ public class MenuJFrame extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 600));
         jPanel1.setLayout(null);
 
-        jTextField6.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField6.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(11, 108, 153), null));
-        jTextField6.setCaretColor(new java.awt.Color(11, 108, 153));
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNoBedRooms.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jTextFieldNoBedRooms.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldNoBedRooms.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(11, 108, 153), null));
+        jTextFieldNoBedRooms.setCaretColor(new java.awt.Color(11, 108, 153));
+        jTextFieldNoBedRooms.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                jTextFieldNoBedRoomsActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField6);
-        jTextField6.setBounds(490, 383, 280, 34);
+        jPanel1.add(jTextFieldNoBedRooms);
+        jTextFieldNoBedRooms.setBounds(490, 383, 280, 34);
 
-        jTextField5.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField5.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(11, 108, 153), null));
-        jTextField5.setCaretColor(new java.awt.Color(11, 108, 153));
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldSFeet.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jTextFieldSFeet.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldSFeet.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(11, 108, 153), null));
+        jTextFieldSFeet.setCaretColor(new java.awt.Color(11, 108, 153));
+        jTextFieldSFeet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                jTextFieldSFeetActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField5);
-        jTextField5.setBounds(490, 333, 280, 34);
+        jPanel1.add(jTextFieldSFeet);
+        jTextFieldSFeet.setBounds(490, 333, 280, 34);
 
-        jTextField4.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(11, 108, 153), null));
-        jTextField4.setCaretColor(new java.awt.Color(11, 108, 153));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldLPrice.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jTextFieldLPrice.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldLPrice.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(11, 108, 153), null));
+        jTextFieldLPrice.setCaretColor(new java.awt.Color(11, 108, 153));
+        jTextFieldLPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                jTextFieldLPriceActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField4);
-        jTextField4.setBounds(490, 282, 280, 34);
+        jPanel1.add(jTextFieldLPrice);
+        jTextFieldLPrice.setBounds(490, 282, 280, 34);
 
-        jTextField3.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(11, 108, 153), null));
-        jTextField3.setCaretColor(new java.awt.Color(11, 108, 153));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldLName.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jTextFieldLName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldLName.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(11, 108, 153), null));
+        jTextFieldLName.setCaretColor(new java.awt.Color(11, 108, 153));
+        jTextFieldLName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jTextFieldLNameActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField3);
-        jTextField3.setBounds(490, 231, 280, 34);
+        jPanel1.add(jTextFieldLName);
+        jTextFieldLName.setBounds(490, 231, 280, 34);
 
-        jTextField2.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(11, 108, 153), null));
-        jTextField2.setCaretColor(new java.awt.Color(11, 108, 153));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldFName.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jTextFieldFName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldFName.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(11, 108, 153), null));
+        jTextFieldFName.setCaretColor(new java.awt.Color(11, 108, 153));
+        jTextFieldFName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextFieldFNameActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2);
-        jTextField2.setBounds(490, 180, 280, 34);
+        jPanel1.add(jTextFieldFName);
+        jTextFieldFName.setBounds(490, 180, 280, 34);
 
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(11, 108, 153), null));
-        jTextField1.setCaretColor(new java.awt.Color(11, 108, 153));
-        jTextField1.setMinimumSize(new java.awt.Dimension(7, 28));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldLotNum.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jTextFieldLotNum.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldLotNum.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(11, 108, 153), null));
+        jTextFieldLotNum.setCaretColor(new java.awt.Color(11, 108, 153));
+        jTextFieldLotNum.setMinimumSize(new java.awt.Dimension(7, 28));
+        jTextFieldLotNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextFieldLotNumActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1);
-        jTextField1.setBounds(490, 129, 280, 34);
+        jPanel1.add(jTextFieldLotNum);
+        jTextFieldLotNum.setBounds(490, 129, 280, 34);
 
         jButtonNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Next.png"))); // NOI18N
         jButtonNext.setAlignmentY(0.0F);
@@ -148,7 +147,7 @@ public class MenuJFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonNext);
-        jButtonNext.setBounds(504, 487, 175, 70);
+        jButtonNext.setBounds(505, 498, 175, 70);
 
         jButtonPrevious.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Previous.png"))); // NOI18N
         jButtonPrevious.setAlignmentY(0.0F);
@@ -167,7 +166,7 @@ public class MenuJFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonPrevious);
-        jButtonPrevious.setBounds(273, 487, 175, 70);
+        jButtonPrevious.setBounds(274, 498, 175, 70);
 
         jButtonClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Clear.png"))); // NOI18N
         jButtonClear.setAlignmentY(0.0F);
@@ -242,6 +241,11 @@ public class MenuJFrame extends javax.swing.JFrame {
                 jButtonAddMouseReleased(evt);
             }
         });
+        jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonAdd);
         jButtonAdd.setBounds(0, 170, 175, 70);
 
@@ -269,18 +273,12 @@ public class MenuJFrame extends javax.swing.JFrame {
         jPanel1.add(jButtonReset);
         jButtonReset.setBounds(0, 100, 175, 70);
 
-        jLabelHeader.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabelHeader.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(jLabelHeader);
-        jLabelHeader.setBounds(250, 20, 470, 60);
-
         jLabelFooter.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelFooter.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jLabelFooter);
-        jLabelFooter.setBounds(0, 480, 170, 90);
+        jLabelFooter.setBounds(200, 420, 570, 90);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/DSA_UI.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/DSA UI_01.png"))); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
 
@@ -392,29 +390,33 @@ public class MenuJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonResetActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextFieldLotNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLotNumActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextFieldLotNumActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextFieldFNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTextFieldFNameActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void jTextFieldLNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_jTextFieldLNameActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void jTextFieldLPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLPriceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_jTextFieldLPriceActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void jTextFieldSFeetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSFeetActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_jTextFieldSFeetActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void jTextFieldNoBedRoomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNoBedRoomsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_jTextFieldNoBedRoomsActionPerformed
+
+    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -461,13 +463,12 @@ public class MenuJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelFooter;
-    private javax.swing.JLabel jLabelHeader;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextFieldFName;
+    private javax.swing.JTextField jTextFieldLName;
+    private javax.swing.JTextField jTextFieldLPrice;
+    private javax.swing.JTextField jTextFieldLotNum;
+    private javax.swing.JTextField jTextFieldNoBedRooms;
+    private javax.swing.JTextField jTextFieldSFeet;
     // End of variables declaration//GEN-END:variables
 }
