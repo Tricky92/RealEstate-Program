@@ -201,7 +201,7 @@ public class MenuJFrame extends javax.swing.JFrame {
         jPanel1.add(jLabelFooter);
         jLabelFooter.setBounds(0, 480, 170, 90);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Thilina\\Desktop\\DSA UI.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/DSA_UI.jpg"))); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
 
