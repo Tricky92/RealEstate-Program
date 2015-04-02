@@ -12,14 +12,14 @@ import javax.swing.ImageIcon;
  *
  * @author Thilina
  */
-public class MenuJFrame extends javax.swing.JFrame {
+public class RealEstate extends javax.swing.JFrame {
 
     /**
      * Creates new form MenuJFrame
      */
     
     
-    public MenuJFrame() {
+    public RealEstate() {
         initComponents();
         
         
