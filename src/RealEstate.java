@@ -482,7 +482,7 @@ public class RealEstate extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuJFrame().setVisible(true);
+                new RealEstate().setVisible(true);
             }
         });
     }
