@@ -8,6 +8,8 @@
  *
  * @author Chamodh
  */
+import java.io.*;
+
 public class HouseFile {
     
     private static BufferedReader inputFile;
