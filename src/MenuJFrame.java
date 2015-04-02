@@ -16,8 +16,12 @@ public class MenuJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MenuJFrame
      */
+    
+    
     public MenuJFrame() {
         initComponents();
+        
+        
     }
 
     /**
@@ -30,6 +34,8 @@ public class MenuJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabelMinimize = new javax.swing.JLabel();
+        jLabelClose = new javax.swing.JLabel();
         jTextFieldNoBedRooms = new javax.swing.JTextField();
         jTextFieldSFeet = new javax.swing.JTextField();
         jTextFieldLPrice = new javax.swing.JTextField();
@@ -49,13 +55,31 @@ public class MenuJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RealEstate Program");
         setMaximumSize(new java.awt.Dimension(800, 600));
+        setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(800, 600));
-        setResizable(false);
         getContentPane().setLayout(null);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 600));
         jPanel1.setLayout(null);
+
+        jLabelMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Button_minimize.png"))); // NOI18N
+        jLabelMinimize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelMinimizeMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabelMinimize);
+        jLabelMinimize.setBounds(755, 13, 15, 16);
+
+        jLabelClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Button_close.png"))); // NOI18N
+        jLabelClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelCloseMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabelClose);
+        jLabelClose.setBounds(780, 10, 15, 14);
 
         jTextFieldNoBedRooms.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jTextFieldNoBedRooms.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -286,6 +310,7 @@ public class MenuJFrame extends javax.swing.JFrame {
         jPanel1.setBounds(0, 0, 800, 600);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonResetMouseClicked
@@ -418,6 +443,14 @@ public class MenuJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAddActionPerformed
 
+    private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
+        dispose();
+    }//GEN-LAST:event_jLabelCloseMouseClicked
+
+    private void jLabelMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMinimizeMouseClicked
+        setState(ICONIFIED);
+    }//GEN-LAST:event_jLabelMinimizeMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -462,7 +495,9 @@ public class MenuJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonReset;
     private javax.swing.JButton jButtonSearch;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelClose;
     private javax.swing.JLabel jLabelFooter;
+    private javax.swing.JLabel jLabelMinimize;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextFieldFName;
     private javax.swing.JTextField jTextFieldLName;
