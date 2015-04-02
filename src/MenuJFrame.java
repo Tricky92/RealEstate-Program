@@ -1,21 +1,90 @@
 
 import javax.swing.ImageIcon;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author Thilina
- */
 public class MenuJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form MenuJFrame
      */
+    
+    private static SortedList list = new SortedList();
+    
+    
+    
+     private  void clearData()
+	  {
+		  jTextFieldLotNum.setText("");
+		  jTextFieldFName.setText("");                    
+		  jTextFieldLName.setText("");                    
+		  jTextFieldLPrice.setText("");                    
+		  jTextFieldSFeet.setText("");
+		  jTextFieldNoBedRooms.setText("");
+	  }
+     
+      private  void dataViewer(ListHouse house)
+	  {
+		  jTextFieldLotNum.setText(Integer.toString(house.lotNumber()));
+		  jTextFieldFName.setText(house.firstName());                    
+		  jTextFieldLName.setText(house.lastName());                    
+		  jTextFieldLPrice.setText(Integer.toString(house.listedPrice()));                    
+		  jTextFieldSFeet.setText(Integer.toString(house.squareFeet()));
+		  jTextFieldNoBedRooms.setText(Integer.toString(house.noOfBedRooms()));
+	  }
+	  
+      
+      private  ListHouse dataRetriver()
+	  {
+	    int lotNumber;
+	    String firstName;
+	    String lastName;
+	    int listedPrice;
+	    int squareFeet;
+	    int noOfBedRooms;
+
+	    lotNumber = Integer.parseInt(jTextFieldLotNum.getText());
+	    firstName = jTextFieldFName.getText();                    
+	    lastName = jTextFieldLName.getText();                    
+	    listedPrice = Integer.parseInt(jTextFieldLPrice.getText()); 
+	    squareFeet = Integer.parseInt(jTextFieldSFeet.getText());
+	    noOfBedRooms = Integer.parseInt(jTextFieldNoBedRooms.getText());
+
+	    ListHouse house = new ListHouse(lotNumber, firstName, lastName, listedPrice, 
+	                                    squareFeet, noOfBedRooms);
+	    return house;
+	  }
+
+
+
+
+public void getStarted()
+	{
+            
+		 try {   
+				ListHouse house;
+				HouseFile.checkAvailability();
+				HouseFile.reset();
+			  
+			    while (HouseFile.moreHouses())
+			    {
+			      house = HouseFile.getNextHouse();
+			      list.insert(house); //start eke num of items gets ++
+			      
+			    }			   
+			    list.reset();
+			    if (list.lengthIs() != 0)
+			    {
+			      house = (ListHouse)list.getNextItem();
+			      dataViewer(house);
+			    } 	
+		} catch (Exception e) {
+		
+		}
+	}
+
+
+
+
     
     
     public MenuJFrame() {
@@ -70,7 +139,7 @@ public class MenuJFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabelMinimize);
-        jLabelMinimize.setBounds(755, 13, 0, 16);
+        jLabelMinimize.setBounds(755, 13, 15, 16);
 
         jLabelClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Button_close.png"))); // NOI18N
         jLabelClose.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -79,7 +148,7 @@ public class MenuJFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabelClose);
-        jLabelClose.setBounds(780, 10, 0, 0);
+        jLabelClose.setBounds(780, 10, 15, 14);
 
         jTextFieldNoBedRooms.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jTextFieldNoBedRooms.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -304,7 +373,7 @@ public class MenuJFrame extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/DSA UI_01.png"))); // NOI18N
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 0, 0);
+        jLabel1.setBounds(0, 0, 800, 600);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 800, 600);
