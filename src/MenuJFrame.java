@@ -503,27 +503,27 @@ public class MenuJFrame extends javax.swing.JFrame {
 
         ListHouse house;
         if (jTextFieldLotNum.getText().isEmpty()) {
-            jLabelFooter.setText("Please enter the Lot Number");
+            jLabelFooter.setText("Enter the Lot Number");
         } else if (jTextFieldFName.getText().isEmpty()) {
-            jLabelFooter.setText("Please enter the First Name ");
+            jLabelFooter.setText("Enter First Name ");
         } else if (jTextFieldLName.getText().isEmpty()) {
-            jLabelFooter.setText("Please enter the Last Name");
+            jLabelFooter.setText("Enter Last Name");
         } else if (jTextFieldLPrice.getText().isEmpty()) {
-            jLabelFooter.setText("Please enter the Price");
+            jLabelFooter.setText("Enter the Listed Price");
         } else if (jTextFieldSFeet.getText().isEmpty()) {
-            jLabelFooter.setText("Please enter the no. of Square Feet");
+            jLabelFooter.setText("Enter the no. of Square Feet");
         } else if (jTextFieldNoBedRooms.getText().isEmpty()) {
-            jLabelFooter.setText("Please enter the no. of Bedrooms");
+            jLabelFooter.setText("Enter the no. of Bedrooms");
         } else {
             try
 			        {
 			          house = dataRetriver();
 			          if (list.availability(house))
-			        	  jLabelFooter.setText("Lot number already in use"); 
+			        	  jLabelFooter.setText("Lot number is not available"); 
 			          else
 			          { 
 			            list.insert(house);
-			            jLabelFooter.setText("House added to list"); 
+			            jLabelFooter.setText("House added successfully"); 
 			          }
 							 if((list.getCurrent() == null)&&(list.lengthIs()==1))
 						 {					
@@ -546,7 +546,7 @@ public class MenuJFrame extends javax.swing.JFrame {
     private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
 
         clearData();
-	jLabelFooter.setText(list.lengthIs() + " houses on list");
+	jLabelFooter.setText(list.lengthIs() + " houses are available");
 
     }//GEN-LAST:event_jButtonClearActionPerformed
 
@@ -560,7 +560,6 @@ public class MenuJFrame extends javax.swing.JFrame {
             } else {
                 house = (ListHouse) list.getNextItem();
                 dataViewer(house);
-                jLabelFooter.setText("Next house displayed");
             }
         }
 
@@ -578,15 +577,15 @@ public class MenuJFrame extends javax.swing.JFrame {
 			          {
 			            house = (ListHouse)list.Fetcher(house);
 			            dataViewer(house);
-			            jLabelFooter.setText("House found"); 
+			            jLabelFooter.setText("Request completed"); 
 			          }
 			          else
-			        	  jLabelFooter.setText("House not found");
+			        	  jLabelFooter.setText("Incomplete request");
 			        }
 			        catch (NumberFormatException badHouseData)
 			        {
 			          // text field info incorrectly formated
-			        	jLabelFooter.setText("Number? " + badHouseData.getMessage());
+			        	jLabelFooter.setText("Enter a lot number" + badHouseData.getMessage());
 			        } 
 
     }//GEN-LAST:event_jButtonSearchActionPerformed
@@ -599,9 +598,9 @@ public class MenuJFrame extends javax.swing.JFrame {
             house = dataRetriver();
             if (list.availability(house)) {
                 list.delete(house);
-                jLabelFooter.setText("House deleted");
+                jLabelFooter.setText("House is deleted from the list");
             } else {
-                jLabelFooter.setText("Incorrect lot number");
+                jLabelFooter.setText("Incomplete request");
             }
         } catch (NumberFormatException badHouseData) {
 
