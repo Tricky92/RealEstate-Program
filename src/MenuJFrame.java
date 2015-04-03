@@ -1,23 +1,23 @@
 
 import javax.swing.ImageIcon;
+import java.awt.*; 
+ import java.awt.event.*;
+ import javax.swing.*;
+import java.awt.Toolkit;
 
+import java.awt.event.KeyEvent;
 
 public class MenuJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form MenuJFrame
      */
-    
     private static SortedList list = new SortedList();
-    
-    
-    
-       
-    
+
     public MenuJFrame() {
         initComponents();
-        
-        
+        getStarted();
+
     }
 
     /**
@@ -63,7 +63,7 @@ public class MenuJFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(755, 12, 15, 20);
+        jLabel2.setBounds(758, 12, 15, 20);
 
         jLabelClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Button_close.png"))); // NOI18N
         jLabelClose.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -107,6 +107,11 @@ public class MenuJFrame extends javax.swing.JFrame {
                 jTextFieldLPriceActionPerformed(evt);
             }
         });
+        jTextFieldLPrice.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldLPriceKeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextFieldLPrice);
         jTextFieldLPrice.setBounds(490, 282, 280, 34);
 
@@ -139,6 +144,11 @@ public class MenuJFrame extends javax.swing.JFrame {
         jTextFieldLotNum.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(11, 108, 153), null));
         jTextFieldLotNum.setCaretColor(new java.awt.Color(11, 108, 153));
         jTextFieldLotNum.setMinimumSize(new java.awt.Dimension(7, 28));
+        jTextFieldLotNum.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldLotNumFocusLost(evt);
+            }
+        });
         jTextFieldLotNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldLotNumActionPerformed(evt);
@@ -169,7 +179,7 @@ public class MenuJFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonNext);
-        jButtonNext.setBounds(575, 503, 175, 70);
+        jButtonNext.setBounds(576, 502, 175, 70);
 
         jButtonClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Clear.png"))); // NOI18N
         jButtonClear.setAlignmentY(0.0F);
@@ -306,91 +316,78 @@ public class MenuJFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
-     private  void clearData()
-	  {
-		  jTextFieldLotNum.setText("");
-		  jTextFieldFName.setText("");                    
-		  jTextFieldLName.setText("");                    
-		  jTextFieldLPrice.setText("");                    
-		  jTextFieldSFeet.setText("");
-		  jTextFieldNoBedRooms.setText("");
-	  }
-     
-      private  void dataViewer(ListHouse house)
-	  {
-		  jTextFieldLotNum.setText(Integer.toString(house.lotNumber()));
-		  jTextFieldFName.setText(house.firstName());                    
-		  jTextFieldLName.setText(house.lastName());                    
-		  jTextFieldLPrice.setText(Integer.toString(house.listedPrice()));                    
-		  jTextFieldSFeet.setText(Integer.toString(house.squareFeet()));
-		  jTextFieldNoBedRooms.setText(Integer.toString(house.noOfBedRooms()));
-	  }
-	  
-      
-      private  ListHouse dataRetriver()
-	  {
-	    int lotNumber;
-	    String firstName;
-	    String lastName;
-	    int listedPrice;
-	    int squareFeet;
-	    int noOfBedRooms;
+    private void clearData() {
+        jTextFieldLotNum.setText("");
+        jTextFieldFName.setText("");
+        jTextFieldLName.setText("");
+        jTextFieldLPrice.setText("");
+        jTextFieldSFeet.setText("");
+        jTextFieldNoBedRooms.setText("");
+    }
 
-	    lotNumber = Integer.parseInt(jTextFieldLotNum.getText());
-	    firstName = jTextFieldFName.getText();                    
-	    lastName = jTextFieldLName.getText();                    
-	    listedPrice = Integer.parseInt(jTextFieldLPrice.getText()); 
-	    squareFeet = Integer.parseInt(jTextFieldSFeet.getText());
-	    noOfBedRooms = Integer.parseInt(jTextFieldNoBedRooms.getText());
+    private void dataViewer(ListHouse house) {
+        jTextFieldLotNum.setText(Integer.toString(house.lotNumber()));
+        jTextFieldFName.setText(house.firstName());
+        jTextFieldLName.setText(house.lastName());
+        jTextFieldLPrice.setText(Integer.toString(house.listedPrice()));
+        jTextFieldSFeet.setText(Integer.toString(house.squareFeet()));
+        jTextFieldNoBedRooms.setText(Integer.toString(house.noOfBedRooms()));
+    }
 
-	    ListHouse house = new ListHouse(lotNumber, firstName, lastName, listedPrice, 
-	                                    squareFeet, noOfBedRooms);
-	    return house;
-	  }
+    private ListHouse dataRetriver() {
+        int lotNumber;
+        String firstName;
+        String lastName;
+        int listedPrice;
+        int squareFeet;
+        int noOfBedRooms;
+
+        lotNumber = Integer.parseInt(jTextFieldLotNum.getText());
+        firstName = jTextFieldFName.getText();
+        lastName = jTextFieldLName.getText();
+        listedPrice = Integer.parseInt(jTextFieldLPrice.getText());
+        squareFeet = Integer.parseInt(jTextFieldSFeet.getText());
+        noOfBedRooms = Integer.parseInt(jTextFieldNoBedRooms.getText());
+
+        ListHouse house = new ListHouse(lotNumber, firstName, lastName, listedPrice,
+                squareFeet, noOfBedRooms);
+        return house;
+    }
+
+    public void getStarted() {
+
+        try {
+            ListHouse house;
+            HouseFile.checkAvailability();
+            HouseFile.reset();
+
+            while (HouseFile.moreHouses()) {
+                house = HouseFile.getNextHouse();
+                list.insert(house); //start eke num of items gets ++
+
+            }
+            list.reset();
+            if (list.lengthIs() != 0) {
+                house = (ListHouse) list.getNextItem();
+                dataViewer(house);
+            }
+        } catch (Exception e) {
+
+        }
+    }
 
 
-
-
-public void getStarted()
-	{
-            
-		 try {   
-				ListHouse house;
-				HouseFile.checkAvailability();
-				HouseFile.reset();
-			  
-			    while (HouseFile.moreHouses())
-			    {
-			      house = HouseFile.getNextHouse();
-			      list.insert(house); //start eke num of items gets ++
-			      
-			    }			   
-			    list.reset();
-			    if (list.lengthIs() != 0)
-			    {
-			      house = (ListHouse)list.getNextItem();
-			      dataViewer(house);
-			    } 	
-		} catch (Exception e) {
-		
-		}
-	}
-    
-    
-    
     private void jButtonResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonResetMouseClicked
-        
+
     }//GEN-LAST:event_jButtonResetMouseClicked
 
     private void jButtonResetMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonResetMousePressed
-        ImageIcon Reset = new ImageIcon (getClass().getResource("/Images/Reset_Clicked.png"));
+        ImageIcon Reset = new ImageIcon(getClass().getResource("/Images/Reset_Clicked.png"));
         jButtonReset.setIcon(Reset);
     }//GEN-LAST:event_jButtonResetMousePressed
 
     private void jButtonResetMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonResetMouseReleased
-        ImageIcon Reset = new ImageIcon (getClass().getResource("/Images/Reset.png"));
+        ImageIcon Reset = new ImageIcon(getClass().getResource("/Images/Reset.png"));
         jButtonReset.setIcon(Reset);
     }//GEN-LAST:event_jButtonResetMouseReleased
 
@@ -399,12 +396,12 @@ public void getStarted()
     }//GEN-LAST:event_jButtonAddMouseClicked
 
     private void jButtonAddMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddMousePressed
-        ImageIcon Add = new ImageIcon (getClass().getResource("/Images/Add_Clicked.png"));
+        ImageIcon Add = new ImageIcon(getClass().getResource("/Images/Add_Clicked.png"));
         jButtonAdd.setIcon(Add);
     }//GEN-LAST:event_jButtonAddMousePressed
 
     private void jButtonAddMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddMouseReleased
-        ImageIcon Add = new ImageIcon (getClass().getResource("/Images/Add.png"));
+        ImageIcon Add = new ImageIcon(getClass().getResource("/Images/Add.png"));
         jButtonAdd.setIcon(Add);
     }//GEN-LAST:event_jButtonAddMouseReleased
 
@@ -413,12 +410,12 @@ public void getStarted()
     }//GEN-LAST:event_jButtonDeleteMouseClicked
 
     private void jButtonDeleteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDeleteMousePressed
-        ImageIcon Delete = new ImageIcon (getClass().getResource("/Images/Delete_Clicked.png"));
+        ImageIcon Delete = new ImageIcon(getClass().getResource("/Images/Delete_Clicked.png"));
         jButtonDelete.setIcon(Delete);
     }//GEN-LAST:event_jButtonDeleteMousePressed
 
     private void jButtonDeleteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDeleteMouseReleased
-        ImageIcon Delete = new ImageIcon (getClass().getResource("/Images/Delete.png"));
+        ImageIcon Delete = new ImageIcon(getClass().getResource("/Images/Delete.png"));
         jButtonDelete.setIcon(Delete);
     }//GEN-LAST:event_jButtonDeleteMouseReleased
 
@@ -427,12 +424,12 @@ public void getStarted()
     }//GEN-LAST:event_jButtonSearchMouseClicked
 
     private void jButtonSearchMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSearchMousePressed
-        ImageIcon Search = new ImageIcon (getClass().getResource("/Images/Search_Clicked.png"));
+        ImageIcon Search = new ImageIcon(getClass().getResource("/Images/Search_Clicked.png"));
         jButtonSearch.setIcon(Search);
     }//GEN-LAST:event_jButtonSearchMousePressed
 
     private void jButtonSearchMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSearchMouseReleased
-        ImageIcon Search = new ImageIcon (getClass().getResource("/Images/Search.png"));
+        ImageIcon Search = new ImageIcon(getClass().getResource("/Images/Search.png"));
         jButtonSearch.setIcon(Search);
     }//GEN-LAST:event_jButtonSearchMouseReleased
 
@@ -441,12 +438,12 @@ public void getStarted()
     }//GEN-LAST:event_jButtonClearMouseClicked
 
     private void jButtonClearMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonClearMousePressed
-        ImageIcon Clear = new ImageIcon (getClass().getResource("/Images/Clear_Clicked.png"));
+        ImageIcon Clear = new ImageIcon(getClass().getResource("/Images/Clear_Clicked.png"));
         jButtonClear.setIcon(Clear);
     }//GEN-LAST:event_jButtonClearMousePressed
 
     private void jButtonClearMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonClearMouseReleased
-        ImageIcon Clear = new ImageIcon (getClass().getResource("/Images/Clear.png"));
+        ImageIcon Clear = new ImageIcon(getClass().getResource("/Images/Clear.png"));
         jButtonClear.setIcon(Clear);
     }//GEN-LAST:event_jButtonClearMouseReleased
 
@@ -455,26 +452,25 @@ public void getStarted()
     }//GEN-LAST:event_jButtonNextMouseClicked
 
     private void jButtonNextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNextMousePressed
-        ImageIcon Next = new ImageIcon (getClass().getResource("/Images/Next_Clicked.png"));
+        ImageIcon Next = new ImageIcon(getClass().getResource("/Images/Next_Clicked.png"));
         jButtonNext.setIcon(Next);
     }//GEN-LAST:event_jButtonNextMousePressed
 
     private void jButtonNextMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNextMouseReleased
-        ImageIcon Next = new ImageIcon (getClass().getResource("/Images/Next.png"));
+        ImageIcon Next = new ImageIcon(getClass().getResource("/Images/Next.png"));
         jButtonNext.setIcon(Next);
     }//GEN-LAST:event_jButtonNextMouseReleased
 
     private void jButtonResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResetActionPerformed
         ListHouse house;
-		 list.reset();
-                    if (list.lengthIs() == 0)
-                        clearData();
-                    else
-                    {
-			house = (ListHouse)list.getNextItem();
-			dataViewer(house);
-		    }
-			jLabelFooter.setText("List has been reset successfully"); 
+        list.reset();
+        if (list.lengthIs() == 0) {
+            clearData();
+        } else {
+            house = (ListHouse) list.getNextItem();
+            dataViewer(house);
+        }
+        jLabelFooter.setText("List has been reset successfully");
     }//GEN-LAST:event_jButtonResetActionPerformed
 
     private void jTextFieldLotNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLotNumActionPerformed
@@ -490,7 +486,9 @@ public void getStarted()
     }//GEN-LAST:event_jTextFieldLNameActionPerformed
 
     private void jTextFieldLPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLPriceActionPerformed
-        // TODO add your handling code here:
+        
+        
+        
     }//GEN-LAST:event_jTextFieldLPriceActionPerformed
 
     private void jTextFieldSFeetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSFeetActionPerformed
@@ -502,30 +500,30 @@ public void getStarted()
     }//GEN-LAST:event_jTextFieldNoBedRoomsActionPerformed
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-        
-        ListHouse house;		
-            if(jTextFieldLotNum.getText().isEmpty())
-                jLabelFooter.setText("Please enter the Lot Number");
-            else if(jTextFieldFName.getText().isEmpty())
-                jLabelFooter.setText("Please enter the First Name ");
-            else if(jTextFieldLName.getText().isEmpty())
-                jLabelFooter.setText("Please enter the Last Name");
-            else if(jTextFieldLPrice.getText().isEmpty())
-                jLabelFooter.setText("Please enter the Price");
-            else if(jTextFieldSFeet.getText().isEmpty())
-                jLabelFooter.setText("Please enter the no. of Square Feet");
-            else if(jTextFieldNoBedRooms.getText().isEmpty())
-                jLabelFooter.setText("Please enter the no. of Bedrooms");
-            else{
-				 try
+
+        ListHouse house;
+        if (jTextFieldLotNum.getText().isEmpty()) {
+            jLabelFooter.setText("Please enter the Lot Number");
+        } else if (jTextFieldFName.getText().isEmpty()) {
+            jLabelFooter.setText("Please enter the First Name ");
+        } else if (jTextFieldLName.getText().isEmpty()) {
+            jLabelFooter.setText("Please enter the Last Name");
+        } else if (jTextFieldLPrice.getText().isEmpty()) {
+            jLabelFooter.setText("Please enter the Price");
+        } else if (jTextFieldSFeet.getText().isEmpty()) {
+            jLabelFooter.setText("Please enter the no. of Square Feet");
+        } else if (jTextFieldNoBedRooms.getText().isEmpty()) {
+            jLabelFooter.setText("Please enter the no. of Bedrooms");
+        } else {
+            try
 			        {
 			          house = dataRetriver();
 			          if (list.availability(house))
-			        	  jLabelFooter.setText("Lot number is already in use"); 
+			        	  jLabelFooter.setText("Lot number already in use"); 
 			          else
 			          { 
 			            list.insert(house);
-			            jLabelFooter.setText("New house added to the list"); 
+			            jLabelFooter.setText("House added to list"); 
 			          }
 							 if((list.getCurrent() == null)&&(list.lengthIs()==1))
 						 {					
@@ -534,46 +532,44 @@ public void getStarted()
 
 						 }					 
 			         
-			        }
-			        catch (NumberFormatException d)
-			        {
-			          
-			        	jLabelFooter.setText("Invalid data format");
-			        }
+			        } catch (NumberFormatException d) {
+
+                jLabelFooter.setText("Invalid data format");
             }
+        }
+
         
+        
+
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
-        
+
         clearData();
-	jLabelFooter.setText(list.lengthIs() + " houses on the list");
-        
+	jLabelFooter.setText(list.lengthIs() + " houses on list");
+
     }//GEN-LAST:event_jButtonClearActionPerformed
 
     private void jButtonNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNextActionPerformed
-        
-        if((list.lengthIs()==1) && list.getCurrent()==null)
-				 {}
-				 else{
-				 ListHouse house;
-				 if (list.lengthIs() == 0)
-					 jLabelFooter.setText("No houses are listed");
-			        else
-			          {
-			          house = (ListHouse)list.getNextItem();
-			          dataViewer(house);
-			        }
-				 }
-        
+
+        if ((list.lengthIs() == 1) && list.getCurrent() == null) {
+        } else {
+            ListHouse house;
+            if (list.lengthIs() == 0) {
+                jLabelFooter.setText("No houses are listed");
+            } else {
+                house = (ListHouse) list.getNextItem();
+                dataViewer(house);
+                jLabelFooter.setText("Next house displayed");
+            }
+        }
+
     }//GEN-LAST:event_jButtonNextActionPerformed
 
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
-        
-        ListHouse house;
-				
- 
-				int lotNumber;
+
+          ListHouse house;
+				 int lotNumber;
 			        try
 			        {
 			          lotNumber = Integer.parseInt(jTextFieldLotNum.getText());
@@ -582,54 +578,84 @@ public void getStarted()
 			          {
 			            house = (ListHouse)list.Fetcher(house);
 			            dataViewer(house);
-			            jLabelFooter.setText("Request Completed"); 
+			            jLabelFooter.setText("House found"); 
 			          }
 			          else
-			        	  jLabelFooter.setText("Incomplete Request");
+			        	  jLabelFooter.setText("House not found");
 			        }
 			        catch (NumberFormatException badHouseData)
 			        {
 			          // text field info incorrectly formated
-			        	jLabelFooter.setText("Invalid data format" + badHouseData.getMessage());
+			        	jLabelFooter.setText("Number? " + badHouseData.getMessage());
 			        } 
-        
+
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
-        
+
         ListHouse house;
-						        
-			        try
-			        {
-			          house = dataRetriver();
-			          if (list.availability(house))
-			          {
-			            list.delete(house);
-			            jLabelFooter.setText("House deleted"); 
-			          }
-			          else
-			        	  jLabelFooter.setText("Incorrect lot number"); 
-			        }
-			        catch (NumberFormatException badHouseData)
-			        {
-			          
-			        	jLabelFooter.setText("Invalid data format" + badHouseData.getMessage());
-			        } 
-			        clearData();
-        
+
+        try {
+            house = dataRetriver();
+            if (list.availability(house)) {
+                list.delete(house);
+                jLabelFooter.setText("House deleted");
+            } else {
+                jLabelFooter.setText("Incorrect lot number");
+            }
+        } catch (NumberFormatException badHouseData) {
+
+            jLabelFooter.setText("Invalid data format" + badHouseData.getMessage());
+        }
+        clearData();
+
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
+
+        //dispose();
         
-        dispose();
         
+         ListHouse house;
+			        try 
+			        {
+			          HouseFile.rewrite();
+			          list.reset();
+			          int length = list.lengthIs();
+			          for (int counter = 1; counter <= length; counter++)
+			          {
+			            house = (ListHouse)list.getNextItem();
+			            HouseFile.putToFile(house);
+			          }
+			          HouseFile.close();
+			        }
+			        catch (Exception e)
+			        {
+			          System.out.println("Issue in "+e); 
+			                            
+			        }
+			        System.exit(0); 
+        
+
     }//GEN-LAST:event_jLabelCloseMouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        
+
         setState(MenuJFrame.ICONIFIED);
-        
+
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jTextFieldLotNumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldLotNumFocusLost
+        
+        
+        
+    }//GEN-LAST:event_jTextFieldLotNumFocusLost
+
+    private void jTextFieldLPriceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldLPriceKeyTyped
+        
+        
+        
+    }//GEN-LAST:event_jTextFieldLPriceKeyTyped
 
     /**
      * @param args the command line arguments
@@ -659,6 +685,9 @@ public void getStarted()
         //</editor-fold>
 
         /* Create and display the form */
+        
+        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MenuJFrame().setVisible(true);

@@ -11,134 +11,129 @@
 import java.io.*;
 
 public class HouseFile {
-    
+
     private static BufferedReader inputFile;
-	private static PrintWriter outputFile;
-	private static boolean inputFileOpen = false;
-	private static boolean outputFileOpen = false;
-	private static String inputString =""; 
-	
-	public static void checkAvailability()
+    private static PrintWriter outputFile;
+    private static boolean inputFileOpen = false;
+    private static boolean outputFileOpen = false;
+    private static String inputString = "";
+
+    public static void checkAvailability()
 	{
 		try {
-			File sourcer = new File("houses.dat"); 
+			File sourcer = new File("house.dat"); 
 			if(!sourcer.exists())
 			sourcer.createNewFile();
 			
 	        } catch (Exception e) {
-	        	System.out.println("Error "+e);
+	        	System.out.println("Issue in "+e);
 	                              }			
 	}
-	
-// Resets file for reading
 
-	public static void reset()
-	{
-		try {
-			
-			if (inputFileOpen) inputFile.close();
-			if (outputFileOpen) outputFile.close();
-			inputFile = new BufferedReader(new FileReader("houses.dat"));
-			inputFileOpen = true;
-			inputString = inputFile.readLine();
-			
-			} catch (IOException e) {
-				System.out.println("Error "+e); 
-		}
-	
-	}
-	
-// Resets file for writing
+    public static void reset() {
+        try {
 
-	public static void rewrite()
-	{
-		try {
-			
-			if (inputFileOpen) inputFile.close();
-			if (outputFileOpen) outputFile.close();
-			outputFile = new PrintWriter(new FileWriter("houses.dat"));
-			outputFileOpen = true;
-			
-			} catch (Exception e) {
-				System.out.println("Error "+e); 
-		}
+            if (inputFileOpen) {
+                inputFile.close();
+            }
+            if (outputFileOpen) {
+                outputFile.close();
+            }
+            inputFile = new BufferedReader(new FileReader("house.dat"));
+            inputFileOpen = true;
+            inputString = inputFile.readLine();
 
-	}
-	
-	
-// Returns true if the file is open to read and there are more houses.
+        } catch (IOException e) {
+            System.out.println("Issue in " + e);
+        }
 
-	public static boolean moreHouses()
-	{
-		if (!inputFileOpen || (inputString == null))
-			return false;
-			else return true;
-	}
-	
-// Gets and returns the house information from ListHouse file.
+    }
 
-	public static ListHouse getNextHouse() 
-	{
-		int lotNumber = 0;
-		String lastName = "lname";
-		String firstName = "fname";
-		int listedPrice = 0;
-		int squareFeet = 0;
-		int noOfBedRooms =0;
-		
-		try {		
-			
-			lotNumber = Integer.parseInt(inputFile.readLine());
-			lastName = inputString;
-			firstName = inputFile.readLine();
-			listedPrice = Integer.parseInt(inputFile.readLine());
-			squareFeet = Integer.parseInt(inputFile.readLine());
-			noOfBedRooms = Integer.parseInt(inputFile.readLine());
-			inputString = inputFile.readLine();			
-			} catch (IOException e) {
-				System.out.println("Error "+e); 
-		}	
-		
-		ListHouse house = new ListHouse(lotNumber, lastName, firstName, listedPrice,
-		squareFeet, noOfBedRooms);
-		return house;
+    public static void rewrite() {
 
-	}
+        try {
 
-// Puts house information to House info file.
+            if (inputFileOpen) {
+                inputFile.close();
+            }
+            if (outputFileOpen) {
+                outputFile.close();
+            }
+            outputFile = new PrintWriter(new FileWriter("house.dat"));
+            outputFileOpen = true;
 
-	public static void putToFile(ListHouse house)
-	{
-		try {
-			
-			outputFile.println(house.lotNumber());
-			outputFile.println(house.lastName());
-			outputFile.println(house.firstName());
-			outputFile.println(house.listedPrice());
-			outputFile.println(house.squareFeet());
-			outputFile.println(house.noOfBedRooms());
-			} catch (Exception e) {
-				System.out.println("Error "+e); 
-		}
+        } catch (Exception e) {
+            System.out.println("Issue in " + e);
+        }
 
-	}
+    }
 
-// Closes house info files
+    public static boolean moreHouses() {
+        if (!inputFileOpen || (inputString == null)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
-	public static void close()
-	{
-		
-		try {
-			
-			if (inputFileOpen) inputFile.close();
-			if (outputFileOpen) outputFile.close();
-			inputFileOpen = false;
-			outputFileOpen = false;
-			
-			} catch (IOException e) {
-				System.out.println("Error "+e); 
-		}
+    public static ListHouse getNextHouse() {
+        String lastName = "lname";
+        String firstName = "fname";
+        int lotNumber = 0;
+        int listedPrice = 0;
+        int squareFeet = 0;
+        int noOfBedRooms = 0;
 
-	}
-    
+        try {
+
+            lastName = inputString;
+            firstName = inputFile.readLine();
+            lotNumber = Integer.parseInt(inputFile.readLine());
+            listedPrice = Integer.parseInt(inputFile.readLine());
+            squareFeet = Integer.parseInt(inputFile.readLine());
+            noOfBedRooms = Integer.parseInt(inputFile.readLine());
+            inputString = inputFile.readLine();
+        } catch (IOException e) {
+            System.out.println("Issue in " + e);
+        }
+
+        ListHouse house = new ListHouse(lotNumber, firstName, lastName, listedPrice, squareFeet, noOfBedRooms );
+        return house;
+
+    }
+
+    public static void putToFile(ListHouse house) {
+        try {
+
+            outputFile.println(house.lastName());
+            outputFile.println(house.firstName());
+            outputFile.println(house.lotNumber());
+            outputFile.println(house.listedPrice());
+            outputFile.println(house.squareFeet());
+            outputFile.println(house.noOfBedRooms());
+        } catch (Exception e) {
+            System.out.println("Issue in " + e);
+        }
+
+    }
+
+    public static void close() {
+
+        try {
+
+            if (inputFileOpen) {
+                inputFile.close();
+            }
+            if (outputFileOpen) {
+                outputFile.close();
+            }
+            inputFileOpen = false;
+            outputFileOpen = false;
+
+        } catch (IOException e) {
+            System.out.println("Issue in " + e);
+        }
+
+    }
+
 }
