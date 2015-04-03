@@ -620,7 +620,7 @@ public void getStarted()
 			        try
 			        {
 			          lotNumber = Integer.parseInt(jTextFieldLotNum.getText());
-			          house = new ListHouse("", "", lotNumber, 0, 0, 0);
+			          house = new ListHouse(lotNumber, "", "", 0, 0, 0);
 			          if (list.availability(house))
 			          {
 			            house = (ListHouse)list.Fetcher(house);

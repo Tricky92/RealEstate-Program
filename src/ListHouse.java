@@ -12,31 +12,30 @@ public class ListHouse implements Listable{
     
     // Declaring variables
     
+    private int lotNumber;
     private String lastName;
     private String firstName;
-    private int lotNumber;
-    private int price;
+    private int listedPrice;
     private int squareFeet;
-    private int bedRooms;
+    private int noOfBedRooms;
     
     //build a constructor to check if the both values are equal
 
-    public ListHouse(String lastName, String firstName, int lotNumber,
-		int price, int squareFeet, int bedRooms )
+    public ListHouse(int lotNumber, String lastName, String firstName, int price, int squareFeet, int bedRooms )
 		{
-		this.lastName = lastName;
-		this.firstName = firstName;
 		this.lotNumber = lotNumber;
-		this.price = price;
+                this.lastName = lastName;
+		this.firstName = firstName;
+		this.listedPrice = listedPrice;
 		this.squareFeet = squareFeet;
-		this.bedRooms = bedRooms;
+		this.noOfBedRooms = noOfBedRooms;
 		}
     
                 public Listable copy()
 		
 		{
-		ListHouse result = new ListHouse(lastName, firstName, lotNumber, price,
-		squareFeet, bedRooms);
+		ListHouse result = new ListHouse(lotNumber, lastName, firstName, listedPrice,
+		squareFeet, noOfBedRooms);
 		return result;
 		}
                 
@@ -62,6 +61,11 @@ public class ListHouse implements Listable{
 		
 		}
                 
+                
+                public int lotNumber()
+		{
+		return lotNumber;
+		}
                 public String lastName()
 		{
 		return lastName;
@@ -70,21 +74,17 @@ public class ListHouse implements Listable{
 		{
 		return firstName;
 		}
-		public int lotNumber()
+		public int listedPrice()
 		{
-		return lotNumber;
-		}
-		public int price()
-		{
-		return price;
+		return listedPrice;
 		}
 		public int squareFeet()
 		{
 		return squareFeet;
 		}
-		public int bedRooms()
+		public int noOfBedRooms()
 		{
-		return bedRooms;
+		return noOfBedRooms;
 		}
     
 }
