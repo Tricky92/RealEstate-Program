@@ -123,9 +123,7 @@ public void getStarted()
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RealEstate Program");
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));
@@ -245,7 +243,7 @@ public void getStarted()
             }
         });
         jPanel1.add(jButtonNext);
-        jButtonNext.setBounds(505, 498, 175, 70);
+        jButtonNext.setBounds(560, 480, 175, 70);
 
         jButtonPrevious.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Previous.png"))); // NOI18N
         jButtonPrevious.setAlignmentY(0.0F);
